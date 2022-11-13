@@ -1,6 +1,6 @@
 CREATE TABLE vizitka
 (
-    id         INT IDENTITY,
+    id         IDENTITY PRIMARY KEY,
     cele_jmeno VARCHAR(100) NOT NULL,
     firma      VARCHAR(100) NOT NULL,
     ulice      VARCHAR(100) NOT NULL,

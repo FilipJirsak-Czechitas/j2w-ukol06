@@ -132,3 +132,7 @@ input {
 #psc {
     width: 10em;
 }
+
+.error {
+    color: red;
+}

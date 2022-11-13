@@ -1,4 +1,4 @@
-# Úkol 7 – Vizitky 3.0
+# Úkol 6 – Vizitky 3.0
 
 Aplikaci pro zobrazování vizitek upravíme tak, aby údaje o vizitkách měla uložené v databázi. Údaje se tak (konečně!) nebudou ztrácet při restartu aplikace.
 Jako výchozí repository použij toto repository, je zde nakonfigurovaná databáze. Pokud sis v předchozích úkolech s vizitkami upravovala vzhled stránky,
@@ -71,7 +71,7 @@ public void nullStringBinding(WebDataBinder binder) {
 1. Uprav šablou `vizitka.html`, aby zobrazovala data z modelu. Pro zobrazení mapy použij property `celaAdresa`. HTML kód pro zobrazení adresy bude vypadat takto
    (předpokládám, že údaje o vizitce jsou v modelu uložené pod klíčem `vizitka`):
    ```html
-   <iframe style="border:none" th:src="@{https://frame.mapy.cz/(q=${vizitka.celaAdresa})}" width="100%" height="100%" frameborder="0"></iframe>
+   <iframe style="border:none" src="https://frame.mapy.cz/?q=${vizitka.celaAdresa?url}" width="100%" height="100%" frameborder="0"></iframe>
    ```
 1. Vyzkoušej v prohlížeči, že se správně zobrazují detaily vizitky. A také že se zobrazí v prohlížeči chyba (je to stránka zobrazená přímo prohlížečem), pokud
    v adrese zadáš nějaké neexistující ID.   
@@ -94,13 +94,16 @@ public void nullStringBinding(WebDataBinder binder) {
    vstupní data a zobrazit znovu formulář s validačními chybami, pokud je nějaký údaj špatně nebo chybí.
 1. Zkontroluj, zda vše funguje.
 1. *Commitni* a *pushnni* změny (výsledný kód) do svého repository na GitHubu.
-1. Vlož odkaz na své repository do tabulky s úkoly na Google Drive.
+1. Vlož odkaz na své repository do úkolu na portálu [https://moje.czechitas.cz].
 
 ## Odkazy
 
-* odkaz na stránku [Lekce 8](https://java.czechitas.cz/2021-jaro/java-2/lekce-8.html)
-* Java SE 11 [Javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 11.
+* odkaz na stránku [Lekce 8](https://java.czechitas.cz/2022-podzim/java-2-online/lekce-8.html)
+* Java SE 17 [Javadoc](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 17.
 * Dokumentace [Spring Boot](https://spring.io/projects/spring-boot#learn) – odsud je anotace `@SpringBootApplication` a třída `SpringApplication`.
 * Dokumentace [Spring Framework](https://spring.io/projects/spring-framework#learn) – odsud jsou anotace `@Controller`, `@GetRequest` a třída `ModelAndView`.
-* Dokumentace [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) – šablonovací systém pro HTML použitý v projektu.
+* Dokumentace [Freemarker](https://freemarker.apache.org/docs/) – šablonovací systém pro HTML použitý v projektu.
+* Dokumentace [HTML formulářů](https://developer.mozilla.org/en-US/docs/Learn/Forms)
+* [Bootstrap](https://getbootstrap.com) – jeden z CSS frameworků
+* [Bootstrap Icons](https://icons.getbootstrap.com) – sada ikon pro použití na webu
 * [Unsplash](https://unsplash.com) – obrázky a fotografie k použití zdarma
