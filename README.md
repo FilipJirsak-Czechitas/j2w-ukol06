@@ -4,9 +4,9 @@ Aplikaci pro zobrazování vizitek upravíme tak, aby údaje o vizitkách měla 
 Jako výchozí repository použij toto repository, je zde nakonfigurovaná databáze. Pokud sis v předchozích úkolech s vizitkami upravovala vzhled stránky,
 můžeš úpravené styly a stránky použít i zde.
 
-Aplikace bude na úvodní stránce zobrazovat seznam vizitek (šablona `seznam.html`). Po kliknutí na vizitku se zobrazí její detail – stránka s jednou vizitkou,
-pod vizitkou bude mapa (šablona `vizitka.html`). Na titulní stránce je také tlačítko pro přidání vizitky. To zobrazí formulář pro přidání vizitky – šablona
-`formular.html`. Úpravu a mazání vizitky implementovat nemusíš, ale můžeš to udělat jako bonusový úkol.
+Aplikace bude na úvodní stránce zobrazovat seznam vizitek (šablona `seznam.ftlh`). Po kliknutí na vizitku se zobrazí její detail – stránka s jednou vizitkou,
+pod vizitkou bude mapa (šablona `vizitka.ftlh`). Na titulní stránce je také tlačítko pro přidání vizitky. To zobrazí formulář pro přidání vizitky – šablona
+`formular.ftlh`. Úpravu a mazání vizitky implementovat nemusíš, ale můžeš to udělat jako bonusový úkol.
 
 Repository obsahuje skripty pro vytvoření databáze a vzorové šablony stránek. V Java kódu obsahuje jenom třídu `Application` – všechny ostatní třídy musíš
 vytvořit ty. 
@@ -55,27 +55,27 @@ public void nullStringBinding(WebDataBinder binder) {
    aby bylo možné repository později v controlleru používat.
 1. Uprav metodu controlleru, která zobrazuje seznam vizitek, aby z repository získala seznam vizitek voláním `findAll()`. Seznam vizitek vlož do modelu pod
    nějakým klíčem, třeba `seznam`.
-1. Uprav šablonu `seznam.html` tak, aby pomocí `th:each` procházela seznam vizitek a vypisovala je na stránku. Teď si zase můžeš v prohlížeči zkontrolovat, že
+1. Uprav šablonu `seznam.ftlh` tak, aby pomocí `[#list]` procházela seznam vizitek a vypisovala je na stránku. Teď si zase můžeš v prohlížeči zkontrolovat, že
    se úvodní stránka zobrazuje správně a už na ní není jedna vizitka, ale všechny vizitky zadané v databázi. Můžeš si otevřít tabulku vizitka v IntelliJ Idea a
    přidat do ní nový záznam nebo záznam upravit a ověřit, že se v prohlížeči po obnově stránky data změní.
 1. Zkontroluj, že správně fungují odkaz na úvodní stránce – první vizitka by měla odkazovat na adresu `http://localhost:8080/1`, druhá na `http://localhost:8080/2`.
    Čísla za lomítkem jsou ID databázového záznamum tj. nemusí začínat jedničkou.
 1. Zprovozni metodu controlleru, která bude reagovat na požadavky metodou `GET`, které budou mít v URL hned za lomítkem číslo. Číslo bude předáno jako parametr
    dovnitř metody. Na základě tohoto ID načti pomocí repository z databáze jeden záznam s odpovídajícím ID. Dostaneš na výstupu typ `Optional<Vizitka>`. Ověříš,
-   zda je v `Optional` přítomná hodnota. Pokud ano, vložíš ji do modelu a zobrazíš pomocí šablony `vizitka.html`. Pokud v `Optional` nebudou data přítomná
+   zda je v `Optional` přítomná hodnota. Pokud ano, vložíš ji do modelu a zobrazíš pomocí šablony `vizitka.ftlh`. Pokud v `Optional` nebudou data přítomná
    (vizitka s daným ID neexistuje), ukončíš metodu voláním `return` s návratovým kódem, který prohlížeči signalizuje stav `404 Not found` – stránka nenalezena.
    Použij k tomu tento kód:
    ```java
    return ResponseEntity.notFound().build();
    ```
-1. Uprav šablou `vizitka.html`, aby zobrazovala data z modelu. Pro zobrazení mapy použij property `celaAdresa`. HTML kód pro zobrazení adresy bude vypadat takto
+1. Uprav šablou `vizitka.ftlh`, aby zobrazovala data z modelu. Pro zobrazení mapy použij property `celaAdresa`. HTML kód pro zobrazení adresy bude vypadat takto
    (předpokládám, že údaje o vizitce jsou v modelu uložené pod klíčem `vizitka`):
    ```html
    <iframe style="border:none" src="https://frame.mapy.cz/?q=${vizitka.celaAdresa?url}" width="100%" height="100%" frameborder="0"></iframe>
    ```
 1. Vyzkoušej v prohlížeči, že se správně zobrazují detaily vizitky. A také že se zobrazí v prohlížeči chyba (je to stránka zobrazená přímo prohlížečem), pokud
    v adrese zadáš nějaké neexistující ID.   
-1. Do controlleru přidej metodu, která bude reagovat na `GET` požadavky na adrese `/nova`. Metoda jen zobrazí šablonu `formular.html`. Uprav formulář tak,
+1. Do controlleru přidej metodu, která bude reagovat na `GET` požadavky na adrese `/nova`. Metoda jen zobrazí šablonu `formular.ftlh`. Uprav formulář tak,
    aby odesílal data metodou `POST` na adresu `/nova`. Vyzkoušej v prohlížeči, že funguje odkaz na přidání vizitky na úvodní stránce.
 1. Do controlleru přidej POST metodu, která bude reagovat na `POST` požadavky na adrese `/nova`. Jako parametr bude přijímat entitu `Vizitka`, použijeme ji i
    pro přenos dat z formuláře. Použij metodu `save()` repository pro uložení vizitky. Po uložení vizitky přesměruj uživatele na úvodní stránku. Vyzkoušej
