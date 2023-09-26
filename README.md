@@ -94,7 +94,7 @@ public void nullStringBinding(WebDataBinder binder) {
    vstupní data a zobrazit znovu formulář s validačními chybami, pokud je nějaký údaj špatně nebo chybí.
 1. Zkontroluj, zda vše funguje.
 1. *Commitni* a *pushnni* změny (výsledný kód) do svého repository na GitHubu.
-1. Vlož odkaz na své repository do úkolu na portálu [https://moje.czechitas.cz].
+1. Vlož odkaz na své repository jako řešení úkolu na portálu [Moje Czechitas](https://moje.czechitas.cz).
 
 ## Odkazy
 
