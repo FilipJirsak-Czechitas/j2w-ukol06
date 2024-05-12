@@ -37,7 +37,7 @@ public void nullStringBinding(WebDataBinder binder) {
   binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 }
 ```
-1. Udělej fork zdrojového repository do svého účtu na GitHubu, případně pokračuj ve svém úkolu z předchozí lekce.
+1. Použij toto repository jako šablonu (Use this template), ze které si vytvoříš repository ve svém účtu na GitHubu.
 1. Naklonuj si repository **ze svého účtu** na GitHubu na lokální počítač.
 1. Spusť si naklonovanou aplikaci, aby se vytvotřila databáze. V prohlížeči se na stránce [http://localhost:8080/](http://localhost:8080/) zatím bude zobrazovat
    jen chyba, v aplikaci není žádný controller.
